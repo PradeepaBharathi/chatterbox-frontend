@@ -25,7 +25,7 @@ function ChatContainer({ currentChat, currentUser, socket }) {
     };
 
     fetchData();
-  }, [currentChat]);
+  }, [currentUser._id,currentChat]);
 
   const handleSendMessage = async (msg) => {
     await axios.post(sendMessageRoute, {
