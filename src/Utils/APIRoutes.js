@@ -1,4 +1,4 @@
-export const host = "http://localhost:9000";
+export const host = "https://chatterbox-une6.onrender.com";
 
 export const registerRoute = `${host}/api/auth/register`;
 export const loginRoute = `${host}/api/auth/login`;
