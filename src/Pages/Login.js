@@ -28,10 +28,10 @@ function Login() {
 
   const handleValidations = () => {
     const { username, password } = values;
-    if (password.length == "") {
+    if (password.length === "") {
       toast.error("Please enter all details", toastOptions);
       return false;
-    } else if (username.length == " ") {
+    } else if (username.length === " ") {
       toast.error("Please enter all details", toastOptions);
       return false;
     }

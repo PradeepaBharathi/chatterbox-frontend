@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import styled from "styled-components";
 import "react-toastify/dist/ReactToastify.css";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import loading from "../Assests/Spinner-1s-200px (1).gif";
 import { setAvatarRoute } from "../Utils/APIRoutes";
 
@@ -24,10 +24,11 @@ function SetAvatar() {
 
   useEffect(() => {
     async function fetchData() {
+     
       const data = [];
-      let delay = 1000;
+      
       for (let i = 0; i < 4; i++) {
-        try {
+       
           const randomSeed = Math.random().toString(36).substring(7);
           const image = await axios.get(`${api}${randomSeed}.svg`, {
             responseType: "blob",
@@ -42,14 +43,8 @@ function SetAvatar() {
               setIsLoading(false);
             }
           };
-        } catch (error) {
-          if (error.response && error.response.status === 429) {
-            await new Promise((resolve) => setTimeout(resolve, delay));
-            delay *= 2;
-          } else {
-            console.error("Error fetching data:", error);
-          }
-        }
+        
+       
       }
     }
 
@@ -60,10 +55,10 @@ function SetAvatar() {
     if (!localStorage.getItem("USER")) {
       nav("/login");
     }
-  }, []);
+  }, [nav]);
 
   const setProfilePicture = async () => {
-    if (selectedAvatar == undefined) {
+    if (selectedAvatar === undefined) {
       toast.error("Please select an avatar", toastOptions);
     } else {
       const user = await JSON.parse(localStorage.getItem("USER"));

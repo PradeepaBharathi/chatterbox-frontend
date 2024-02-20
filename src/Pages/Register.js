@@ -37,7 +37,7 @@ function Register() {
     } else if (password.length < 6) {
       toast.error("Password should be greater than 6 characters", toastOptions);
       return false;
-    } else if (email == "") {
+    } else if (email === "") {
       toast.error("Email is required", toastOptions);
       return false;
     }
@@ -53,10 +53,10 @@ function Register() {
         email,
         password,
       });
-      if (data.status == 400) {
+      if (data.status === 400) {
         toast.error(data.msg, toastOptions);
       }
-      if (data.status == 201) {
+      if (data.status === 201) {
         localStorage.setItem("USER", JSON.stringify(data.user));
         nav("/chats");
       }
